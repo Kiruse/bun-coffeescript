@@ -16,17 +16,17 @@ When aiming to write (part of) your library in CoffeeScript, you likely want to 
 $ bun add -d bun-coffeescript
 ```
 
-Finally, make sure to preload the plugin. Either call bun's `plugin` function yourself in a custom preload script, or add my default script to your `bunfig.toml` or your `Bun.build` call:
+Finally, make sure to preload the plugin. Either call bun's `plugin` function yourself in a custom preload script, or add my register script to your `bunfig.toml` or your `Bun.build` call:
 
 ```toml
-preload: ['bun-coffeescript/default']
+preload: ['bun-coffeescript/register']
 ```
 
 ```js
 Bun.build({
   // ... more config
   preload: [
-    'bun-coffeescript/default',
+    'bun-coffeescript/register',
     // ... more preload scripts
   ],
   // ... yet more config
@@ -38,5 +38,5 @@ Unfortunately, bun does not currently support adding new extensions to the unit 
 
 ```toml
 [test]
-preload = ['bun-coffeescript/default']
+preload = ['bun-coffeescript/register']
 ```
