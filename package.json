@@ -8,7 +8,7 @@
   },
   "exports": {
     ".": "./index.js",
-    "./default": "./default.ts"
+    "./register": "./register.ts"
   },
   "devDependencies": {
     "@types/coffeescript": "^2.5.4",

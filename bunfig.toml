@@ -1,2 +1,2 @@
 [test]
-preload = ['./default.ts']
+preload = ['./register.ts']
