@@ -1,0 +1,20 @@
+{
+  "name": "bun-coffeescript",
+  "version": "1.0.0",
+  "author": "Kiruse",
+  "repository": "https://github.com/kiruse/bun-coffeescript",
+  "engines": {
+    "bun": "^1.0.0"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./default": "./default.ts"
+  },
+  "devDependencies": {
+    "@types/coffeescript": "^2.5.4",
+    "bun-types": "^1.0.3"
+  },
+  "dependencies": {
+    "coffeescript": "^2.7.0"
+  }
+}
