@@ -1,13 +1,14 @@
 {
   "name": "bun-coffeescript",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Kiruse",
   "repository": "https://github.com/kiruse/bun-coffeescript",
+  "main": "index.ts",
   "engines": {
     "bun": "^1.0.0"
   },
   "exports": {
-    ".": "./index.js",
+    ".": "./index.ts",
     "./register": "./register.ts"
   },
   "devDependencies": {
