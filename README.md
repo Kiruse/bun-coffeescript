@@ -33,6 +33,27 @@ Bun.build({
 });
 ```
 
+## Building with bun-coffeescript
+When using CoffeeScript sources in your project you won't be able to simply run `bun build`, because the `bunfig.toml` configuration settings are only respected for the execution of the `bun build` command itself, not for the actual build process. Thus, attempting to run `bun build index.coffee` will simply result in an `index.js` which imports the contents of `index.coffee` as raw string - ie. it is using bun's built-in file loader rather than this plugin's CoffeeScript loader.
+
+To properly build (and by proxy bundle) your project, you must interface with the bun API directly. For example:
+
+```coffee
+# build.coffee in project root
+import CoffeeScriptPlugin from 'bun-coffeescript'
+
+# Bun is an implicitly defined global in the Bun runtime
+Bun.build
+  target: 'node'
+  entrypoints: ['./index.coffee']
+  plugins: [CoffeeScriptPlugin()]
+  outdir: 'build'
+  define:
+    'process.env.ENV': '"PROD"'
+```
+
+Specifying the `process.env.ENV` (or, for compatibility, `process.env.NODE_ENV`) is helpful as there are some differences between running your code directly through the bun runtime versus running bundled code. For example, the `__dirname` constant is replaced (as if implicitly `define`d) with the path at build time, not at runtime.
+
 ## Testing
 Unfortunately, bun does not currently support adding new extensions to the unit testing suite. Thus, you are not able to write your unit tests in CoffeeScript. However, you will need to preload this plugin by adding it to your `bunfig.toml`:
 
